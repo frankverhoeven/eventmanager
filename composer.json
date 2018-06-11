@@ -1,0 +1,36 @@
+{
+  "name": "frankverhoeven/eventmanager",
+  "description": "Zend Framework EventManager via Config",
+  "type": "project",
+  "keywords": [
+    "Frank Verhoeven",
+    "Zend Framework",
+    "EventManager"
+  ],
+  "homepage": "https://frankverhoeven.me/",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "php": "^7.1",
+    "zendframework/zend-eventmanager": "^3.2",
+    "psr/container": "^1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^6.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "FrankVerhoeven\\EventManager\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "FrankVerhoeven\\EventManagerTest\\": "test/"
+    }
+  },
+  "extra": [],
+  "scripts": {
+    "test": "phpunit --colors=always",
+    "test-coverage": "phpunit --colors=always --coverage-text"
+  }
+}
