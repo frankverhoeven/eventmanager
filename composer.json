@@ -31,7 +31,6 @@
       "FrankVerhoeven\\EventManagerTest\\": "test/"
     }
   },
-  "extra": [],
   "scripts": {
     "check": [
       "@cs-check",
@@ -42,6 +41,6 @@
     "cs-check": "phpcs",
     "cs-fix": "phpcbf",
     "test": "phpunit --colors=always",
-    "test-coverage": "phpunit --colors=always --coverage-text"
+    "test-coverage": "phpunit --colors=always --coverage-clover clover.xml"
   }
 }
