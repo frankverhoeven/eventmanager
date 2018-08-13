@@ -7,8 +7,6 @@ namespace FrankVerhoeven\EventManager;
 use Zend\EventManager\EventManagerInterface;
 
 /**
- * ConfigProvider
- *
  * @author Frank Verhoeven <hi@frankverhoeven.me>
  */
 final class ConfigProvider
@@ -30,7 +28,7 @@ final class ConfigProvider
     private function getDependencies(): array
     {
         return [
-            'factories'  => [
+            'factories' => [
                 EventManagerInterface::class => EventManagerFactory::class,
             ],
         ];

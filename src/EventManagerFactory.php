@@ -5,14 +5,12 @@ declare(strict_types=1);
 namespace FrankVerhoeven\EventManager;
 
 use FrankVerhoeven\EventManager\Exception\InvalidArgumentException;
-use Psr\Container\ContainerInterface;
+use Interop\Container\ContainerInterface;
 use Zend\EventManager\EventManager;
 use Zend\EventManager\EventManagerInterface;
 use Zend\EventManager\LazyListener;
 
 /**
- * EventManagerFactory
- *
  * @author Frank Verhoeven <hi@frankverhoeven.me>
  */
 final class EventManagerFactory
@@ -48,22 +46,14 @@ final class EventManagerFactory
     private function attachListener(EventManagerInterface $eventManager, array $definition): void
     {
         if (!isset($definition['event'])) {
-            throw new InvalidArgumentException(\sprintf(
-                '%s::%s requires $definition[\'event\']',
-                static::class,
-                __METHOD__
-            ));
+            throw InvalidArgumentException::missingEventDefinition();
         }
 
         if (!isset($definition['listener'])) {
-            throw new InvalidArgumentException(\sprintf(
-                '%s::%s requires $definition[\'listener\']',
-                static::class,
-                __METHOD__
-            ));
+            throw InvalidArgumentException::missingListenerDefinition();
         }
 
-        $priority = $definition['priority'] ?? null;
+        $priority = $definition['priority'] ?? 1;
 
         $eventManager->attach($definition['event'], $definition['listener'], $priority);
     }
@@ -80,30 +70,18 @@ final class EventManagerFactory
         ContainerInterface $container
     ): void {
         if (!isset($definition['event'])) {
-            throw new InvalidArgumentException(\sprintf(
-                '%s::%s requires $definition[\'event\']',
-                static::class,
-                __METHOD__
-            ));
+            throw InvalidArgumentException::missingEventDefinition();
         }
 
         if (!isset($definition['listener'])) {
-            throw new InvalidArgumentException(\sprintf(
-                '%s::%s requires $definition[\'listener\'] to be callable',
-                static::class,
-                __METHOD__
-            ));
+            throw InvalidArgumentException::missingListenerDefinition();
         }
 
         if (!isset($definition['method'])) {
-            throw new InvalidArgumentException(\sprintf(
-                '%s::%s requires $definition[\'method\'] to be callable',
-                static::class,
-                __METHOD__
-            ));
+            throw InvalidArgumentException::missingMethodDefinition();
         }
 
-        $priority = $definition['priority'] ?? null;
+        $priority = $definition['priority'] ?? 1;
         $lazyListener = new LazyListener($definition, $container);
 
         $eventManager->attach($definition['event'], $lazyListener, $priority);
