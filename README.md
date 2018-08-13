@@ -1,4 +1,6 @@
 # EventManager via Config
+[![Build Status](https://travis-ci.com/frankverhoeven/eventmanager.svg?branch=master)](https://travis-ci.com/frankverhoeven/eventmanager)
+[![Coverage Status](https://coveralls.io/repos/github/frankverhoeven/eventmanager/badge.svg?branch=master)](https://coveralls.io/github/frankverhoeven/eventmanager?branch=master)
 
 ### ConfigProvider
 
